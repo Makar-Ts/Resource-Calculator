@@ -16,7 +16,7 @@ SUPPORTED_MATH_SIGNS = {'+':lambda r, l: r+l,
                         '/':lambda r, l: r/l}
 
 
-def calculate_cost(calc:resource_calculator.ResourceCalculator, id, count, cost={}):
+def calculate_cost(calc:resource_calculator.ResourceCalculator, id, count, cost={}): # omg i love recursion
     if calc.is_primary(id):
         if id in cost:
             cost[id] += count
@@ -57,7 +57,7 @@ def main():
     print(f"HOW TO USE: {HOW_TO_USE}")
     
     config_name = 'resources.json'
-    # determine if application is a script file or frozen exe
+    
     if getattr(sys, 'frozen', False):
         application_path = os.path.dirname(sys.executable)
     elif __file__:

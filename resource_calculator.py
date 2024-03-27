@@ -9,6 +9,8 @@ class ResourceCalculator:
         self.resources = configs_manager.ConfigManager(resources=resources_data)
         self.resources.update_configs()
     def get_component_by_name(self, name:str):
+        # False in get_config means that it will not update the config automatically before the request
+        
         for i in self.resources.get_config("resources", False).keys():
             if name.lower() in map(lambda x: x.lower(), self.resources.get_config(f"resources.{i}.names", False)):
                 return i
